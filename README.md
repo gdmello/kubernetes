@@ -1,4 +1,4 @@
-# kubernetes
+# kubernetes setup
 k8s learnings
 
 * Provision a bunch of nodes using Terraform/ Cloudformation (AWS)
@@ -17,5 +17,33 @@ $ export ETCD_CERT_FILE=/etc/ssl/etcd/ssl/member-k8s-master-node-st-subnet-f4169
 $ export ETCD_TRUSTED_CA_FILE=/etc/ssl/etcd/ssl/ca.pem
 $ etcdctl ls
 /calico
+```
+This does not work, as the `/registry` key is missing. Kubespray setups etcd API v3 as a default, while etcdctl uses v2 of the etcd API. To get this to work use the following-
+```
+$ export ETCDCTL_CACERT=/etc/ssl/etcd/ssl/member-k8s-master-node-st-subnet-f416969d-0.pem
+$ export ETCDCTL_KEY=/etc/ssl/etcd/ssl/member-k8s-master-node-st-subnet-f416969d-0-key.pem
+$ export ETCDCTL_CERT=/etc/ssl/etcd/ssl/member-k8s-master-node-st-subnet-f416969d-0.pem
+$ export ETCDCTL_CACERT=/etc/ssl/etcd/ssl/ca.pem                                                        
+$ export ETCDCTL_API=3
+$ etcdctl member list
+4e163df79473660f: name=etcd2 peerURLs=https://10.100.100.67:2380 clientURLs=https://10.100.100.67:2379 isLeader=false
+b5c00149948f637b: name=etcd1 peerURLs=https://10.100.100.35:2380 clientURLs=https://10.100.100.35:2379 isLeader=false
+cc4794098da00ecb: name=etcd3 peerURLs=https://10.100.200.59:2380 clientURLs=https://10.100.200.59:2379 isLeader=true
+$ etcdctl cluster-health
+member 4e163df79473660f is healthy: got healthy result from https://10.100.100.67:2379
+member b5c00149948f637b is healthy: got healthy result from https://10.100.100.35:2379
+member cc4794098da00ecb is healthy: got healthy result from https://10.100.200.59:2379
+cluster is healthy
+$ ETCDCTL_API=3 etcdctl get / --prefix --keys-only
+/registry/configmaps/kube-system/extension-apiserver-authentication
 
+/registry/deployments/kube-system/kubedns
+
+/registry/deployments/kube-system/kubedns-autoscaler
+
+/registry/events/kube-system/kubedns-3639568078-gjhqm.14cbbcad38a2193f
+
+/registry/events/kube-system/kubedns-autoscaler-2999057513-rrnrm.14cbbcac52e597d4
+
+...
 ```
