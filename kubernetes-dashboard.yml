@@ -8,14 +8,13 @@ metadata:
   name: kubernetes-dashboard-service
 spec: 
   ports: 
-    - 
-      name: http
+    - name: http
       port: 8080
       protocol: TCP
       targetPort: 80
-    - 
-      name: https
+    - name: https
       port: 443
       protocol: TCP
-  selector: ~
+  selector: 
+    k8s-app: kubernetes-dashboard
   type: NodePort
