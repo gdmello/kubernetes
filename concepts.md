@@ -15,6 +15,7 @@ This is a collection of processes running on a cluster-
 These include -
 * Pods - the smallest deployable object in kubernetes. Can consist of one or more containers.
 * Services - Since `Pods` are mortal, `Services` ensure that clients can reach one or more `Pods` (via label selectors). 
+  * whenever the pods in a service are updates, the `Endpoints` api is updated, to map the service to a set of `live` pods.
 * Namespaces
 * Volumes
 * Controllers
