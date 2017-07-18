@@ -47,3 +47,10 @@ $ ETCDCTL_API=3 etcdctl get / --prefix --keys-only
 
 ...
 ```
+From Kevin Qiu
+```
+ssh -D 8123 -f -C -q -N $BASTION_HOST
+https_proxy=socks5://localhost:8123 kubectl cluster-info
+Kubernetes master is running at https://10.100.100.106:6443
+KubeDNS is running at https://10.100.100.106:6443/api/v1/namespaces/kube-system/services/kube-dns/proxy
+```
