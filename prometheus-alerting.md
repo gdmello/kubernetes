@@ -21,7 +21,7 @@ $ node_exporter-0.14.0.linux-amd64/node_exporter
 ```
 rule_files:
   - "node.rules.yml"
-  # - "second.rules"
+  
 
 # A scrape configuration containing exactly one endpoint to scrape:
 # Here it's Prometheus itself.
