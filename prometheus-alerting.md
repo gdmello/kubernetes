@@ -11,10 +11,12 @@ $ alertmanager-0.7.1.linux-amd64/alertmanager --config.file=/home/gavin.dmello/n
 $ prometheus-2.0.0-beta.0.linux-amd64/prometheus --config.file=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/prometheus.yml --web.console.templates=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/consoles --web.console.libraries=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/console_libraries
  The console flags make the console `/consoles/` urls available.
 ```
+Access prometheus at - http://localhost:9090/
 * Node exporter - Export host/ system metrics
 ```
 $ node_exporter-0.14.0.linux-amd64/node_exporter
 ```
+Access node exporters at - http://localhost:9100/
 * Configure prometheus to use the local alert manager, and setup a job to scrape the metrics from node_exporter
 ```
 # prometheus-2.0.0-beta.0.linux-amd64/prometheus.yml
@@ -76,3 +78,4 @@ groups:
 rule_files:
   - "node.rules.yml"
 ```
+* View alerts at - http://localhost:9090/alerts
