@@ -8,10 +8,8 @@ $ alertmanager-0.7.1.linux-amd64/alertmanager --config.file=/home/gavin.dmello/n
 ```
 * Prometheus - download and run 
 ```
-$ alertmanager-0.7.1.linux-amd64/alertmanager --config.file=/home/gavin.dmello/new_wk_spc/alertmanager-0.7.1.linux-amd64/simple.yml
-```
 $ prometheus-2.0.0-beta.0.linux-amd64/prometheus --config.file=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/prometheus.yml --web.console.templates=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/consoles --web.console.libraries=/home/gavin.dmello/new_wk_spc/prometheus-2.0.0-beta.0.linux-amd64/console_libraries
-# The console flags make the console `/consoles/` urls available.
+ The console flags make the console `/consoles/` urls available.
 ```
 * Node exporter - Export host/ system metrics
 ```
