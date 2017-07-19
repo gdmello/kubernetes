@@ -21,31 +21,7 @@ Access node exporters at - http://localhost:9100/
 ```
 # prometheus-2.0.0-beta.0.linux-amd64/prometheus.yml
 ```
-rule_files:
-  - "node.rules.yml"
-  
 
-# A scrape configuration containing exactly one endpoint to scrape:
-# Here it's Prometheus itself.
-scrape_configs:
-  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
-  - job_name: 'prometheus'
-    scrape_interval: 5s
-    # metrics_path defaults to '/metrics'
-    # scheme defaults to 'http'.
-
-    static_configs:
-      - targets: ['localhost:9090']
-
-  - job_name: 'node'
-    scrape_interval: 2s
-    static_configs:
-    - targets: ['localhost:9100']
-    
-alerting:
-  alertmanagers:
-  - static_configs:
-    - targets: ['localhost:9093']
 ```
 
 * The rule file looks like this-
