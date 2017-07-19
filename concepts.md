@@ -24,4 +24,5 @@ These include -
   * StatefulSet
   * Deployment
   * Job
+  * Manifests - configuration files (JSON or YAML) which are used to define kubernetes resources. `kubectl` can be used to create resources with these manifest files.
   
