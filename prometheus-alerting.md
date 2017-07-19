@@ -21,9 +21,7 @@ Access node exporters at - http://localhost:9100/
 ```
 # prometheus-2.0.0-beta.0.linux-amd64/prometheus.yml
 ```
-
-```
-
+See [source](https://github.com/gdmello/kubernetes/blob/master/prometheus.yml)
 * The rule file looks like this-
 ```
 ALERT TestAlert
