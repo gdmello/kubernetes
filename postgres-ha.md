@@ -90,7 +90,9 @@ Postgres HA with stolon
   $ cd stolon-chart
   $ vim stolon/values.yaml
   
-Set the etcd endpoints, 
+  
+  Set the etcd endpoints, 
+
 
   $ kc get svc  | grep etcd
     etcd-cluster                 None         <none>        2380/TCP   11m
