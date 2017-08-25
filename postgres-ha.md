@@ -83,5 +83,20 @@ Use CoreOS `etcd-operator` to install a 3 node cluster
       etcd-cluster-0002                               1/1       Running   0          7m
       etcd-cluster-2-etcd-operator-1952289938-2jp9x   1/1       Running   0          9m
 
+Postgres HA with stolon
+-----------------------
+
+  $ git clone https://github.com/lwolf/stolon-chart.git
+  $ cd stolon-chart
+  $ vim stolon/values.yaml
+  
+Set the etcd endpoints, 
+
+  $ kc get svc  | grep etcd
+    etcd-cluster                 None         <none>        2380/TCP   11m
+    etcd-cluster-client          10.3.0.108   <none>        2379/TCP   11m
+  
+
+  
 
   
