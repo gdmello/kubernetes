@@ -99,6 +99,12 @@ Postgres HA with stolon
     $ kc get svc  | grep etcd
       etcd-cluster                 None         <none>        2380/TCP   11m
       etcd-cluster-client          10.3.0.108   <none>        2379/TCP   11m
+      
+  Deploy Postgres via the stolon chart-
+  
+    $ helm install ./stolon
+    
+    
   
 
   
