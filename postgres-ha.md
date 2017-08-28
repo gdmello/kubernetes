@@ -122,6 +122,7 @@ Postgres HA with stolon
   ```
   
     $ kc create -f storage-class-slow.yaml
+    storageclass "slow" created
     $ kc get sc 
     NAME                  TYPE
     default               kubernetes.io/aws-ebs   
