@@ -100,6 +100,36 @@ Postgres HA with stolon
       etcd-cluster                 None         <none>        2380/TCP   11m
       etcd-cluster-client          10.3.0.108   <none>        2379/TCP   11m
       
+  If persistence is enabled, on AWS and with class `slow`, verify that the StorageClass exists first-
+  
+    $ kc get sc
+    NAME                  TYPE
+    default               kubernetes.io/aws-ebs   
+    etcd-backup-aws-ebs   kubernetes.io/aws-ebs   
+    etcd-backup-gce-pd    kubernetes.io/gce-pd    
+    gp2 (default)         kubernetes.io/aws-ebs   
+
+  If it doesn't exist (as in the example above), create it-
+  ```
+  #storage-class-slow.yaml
+  kind: StorageClass
+  apiVersion: storage.k8s.io/v1
+  metadata:
+    name: slow
+  provisioner: kubernetes.io/aws-ebs
+  parameters:
+    type: gp2
+  ```
+  
+    $ kc create -f storage-class-slow.yaml
+    $ kc get sc 
+    NAME                  TYPE
+    default               kubernetes.io/aws-ebs   
+    etcd-backup-aws-ebs   kubernetes.io/aws-ebs   
+    etcd-backup-gce-pd    kubernetes.io/gce-pd    
+    gp2 (default)         kubernetes.io/aws-ebs   
+    slow                  kubernetes.io/aws-ebs 
+  
   Deploy Postgres via the stolon chart-
   
     $ helm install ./stolon
