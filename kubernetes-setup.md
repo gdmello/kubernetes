@@ -54,8 +54,8 @@ https_proxy=socks5://localhost:8123 kubectl cluster-info
 Kubernetes master is running at https://10.100.100.106:6443
 KubeDNS is running at https://10.100.100.106:6443/api/v1/namespaces/kube-system/services/kube-dns/proxy
 ```
-# Custome Kubelet flags
-* Kubelet can be configured to evict pods/ delete dead containers to free up space via cli args -
+# Custom Kubelet flags
+Kubelet can be configured to evict pods/ delete dead containers to free up space via cli args -
 ```
 --eviction-hard=nodefs.available<10%,nodefs.inodesFree<10%,imagefs.available<10%,imagefs.inodesFree<10%
 ```
