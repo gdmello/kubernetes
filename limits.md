@@ -9,3 +9,7 @@ Resource limits are specified via -
 When Resource Limits > Resource Requests, the pod (i.e. all containers within the pod) 
 will be guaranteed resources specified in the Request and can exceed these values upto a
 maximum of Resource Limits.
+
+https://github.com/kubernetes/community/blob/master/contributors/design-proposals/node/resource-qos.md
+
+If a pod exceeds the Resource Limit, it can be terminated and restarted (depending on pod restart policy).
